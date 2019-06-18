@@ -2,6 +2,7 @@ from selenium import webdriver
 import Constantes as dados
 
 mensagemPost = input('Digite a mensagem do post: ')
+
 print("Iniciando serviço web...")
 navegador = webdriver.Firefox()
 

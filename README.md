@@ -10,3 +10,5 @@ Como utilizar:
       
   2) Faça a instalação do selenium através do pip
   3) Rode o arquivo AR-FB-poster.py
+
+Vídeo demonstrativo: https://www.youtube.com/watch?v=3Jt9OdR2JT8

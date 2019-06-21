@@ -37,3 +37,4 @@ class FuncoesNavegador:
         checkboxes = navegador.find_elements_by_xpath('//div[@role="checkbox"]')
         for checkbox in checkboxes:
             checkbox.click()
+        navegador.find_element_by_xpath('//button[@data-testid="react-composer-post-button"]').click()

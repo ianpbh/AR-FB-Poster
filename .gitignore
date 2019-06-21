@@ -3,3 +3,4 @@ __pycache__/
 Constantes.py
 images/*.png
 images/*.jpg
+images/*.jpeg

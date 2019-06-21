@@ -14,4 +14,5 @@ Como utilizar:
 OBS.: O script foi feito manipulando elementos da página do Facebook, podendo váriar de usuário para usuário, comprometendo a      execução do programa
 
 Vídeo demonstrativo de postagens no feed: https://www.youtube.com/watch?v=3Jt9OdR2JT8
+
 Vídeo demonstrativo de postagens em grupos de venda: https://www.youtube.com/watch?v=-8LF5YmzMRM

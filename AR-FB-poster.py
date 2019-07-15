@@ -30,6 +30,14 @@ while testerOpcao == True:
         mensagemPost = input('Digite a mensagem do post: ')
         testerOpcao = False
     elif opcao == "2":
+        testeTipoGrupo = True
+        while testeTipoGrupo == True:
+            tipoGrupo = input ("Deseja postar a partir do arquivo de grupos(1) ou a partir do padrão definido(2)? ")
+            if tipoGrupo == "1" or tipoGrupo == "2":
+                testeTipoGrupo = False
+            else:
+                print ("Opção inválida")
+
         testerImagem = True
         tituloAnuncio = input('Digite o título do anuncio do post: ')
         descricaoAnuncio = input('Digite a descrição do anuncio do post: ')
@@ -63,7 +71,7 @@ time.sleep(2)
 if opcao == "1":
     funcoes.realizaPostagem(navegador, mensagemPost)
 elif opcao == "2":
-    funcoes.realizaPostagemGrupos(navegador, tituloAnuncio, descricaoAnuncio, precoAnuncio, imagemAnuncio)
+    funcoes.realizaPostagemGrupos(navegador, tituloAnuncio, descricaoAnuncio, precoAnuncio, imagemAnuncio, tipoGrupo)
 else:
     print("Opção inválida")
     exit()

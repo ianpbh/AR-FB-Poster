@@ -3,6 +3,7 @@ import Constantes as dados
 import Funcoes
 import os
 import time
+import json
 
 class bcolors:
     HEADER = '\033[95m'
@@ -13,6 +14,9 @@ class bcolors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
+
+jsonPost = open("post.json", "r")
+descricaoPost = json.loads(jsonPost.read())
 
 testerNavegador = True
 while testerNavegador == True:
@@ -39,9 +43,6 @@ while testerOpcao == True:
                 print ("Opção inválida")
 
         testerImagem = True
-        tituloAnuncio = input('Digite o título do anuncio do post: ')
-        descricaoAnuncio = input('Digite a descrição do anuncio do post: ')
-        precoAnuncio = input('Digite o preço do anuncio do post: ')
         while testerImagem == True:
             imagemAnuncio = input('Digite o nome da imagem que deseja fazer upload, vazio caso não deseje postar imagem (Precisa estar dentro da pasta images): ')
             if os.path.exists("images/" + imagemAnuncio):
@@ -71,7 +72,7 @@ time.sleep(2)
 if opcao == "1":
     funcoes.realizaPostagem(navegador, mensagemPost)
 elif opcao == "2":
-    funcoes.realizaPostagemGrupos(navegador, tituloAnuncio, descricaoAnuncio, precoAnuncio, imagemAnuncio, tipoGrupo)
+    funcoes.realizaPostagemGrupos(navegador, descricaoPost["titulo"], descricaoPost["descricao"], descricaoPost["preco"], imagemAnuncio, tipoGrupo)
 else:
     print("Opção inválida")
     exit()

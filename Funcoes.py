@@ -16,7 +16,7 @@ class FuncoesNavegador:
 
     def realizaPostagem(self, navegador, mensagem):
         navegador.find_element_by_name('xhpc_message').click()
-        navegador.find_element_by_tag_name('body').send_keys(mensagem);
+        navegador.find_element_by_tag_name('body').send_keys(mensagem)
         navegador.find_element_by_class_name('_6c0o').click()
 
     def realizaPostagemGrupos(self, navegador, titulo, descricao, preco, imagem, tipoGrupo):
@@ -42,12 +42,12 @@ class FuncoesNavegador:
             navegador.find_element_by_xpath('//input[@placeholder="Preço"]').send_keys(preco)
             navegador.find_element_by_xpath('//input[@placeholder="Adicionar localização (opcional)"]').clear()
             navegador.find_element_by_class_name('_1mwp').click()
-            navegador.find_element_by_tag_name('body').send_keys(descricao.replace("/","\n"))
+            navegador.find_element_by_tag_name('body').send_keys(descricao.replace("*","\n"))
             if imagem != "":
                 navegador.find_element_by_xpath('//input[@title="Escolha um arquivo para carregar"]').send_keys(os.path.abspath('images/'+imagem))
                 time.sleep(8)
             navegador.find_element_by_xpath('//button[@data-testid="react-composer-post-button"]').click()
-            time.sleep(3)
+            time.sleep(4)
             if int(tipoGrupo) == 2:
                 checkboxes = navegador.find_elements_by_xpath('//div[@role="checkbox"]')
                 for checkbox in checkboxes:

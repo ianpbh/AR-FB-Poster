@@ -19,18 +19,14 @@ class FuncoesNavegador:
         navegador.find_element_by_tag_name('body').send_keys(mensagem)
         navegador.find_element_by_class_name('_6c0o').click()
 
-    def realizaPostagemGrupos(self, navegador, titulo, descricao, preco, imagem, tipoGrupo):
+    def realizaPostagemGrupos(self, navegador, titulo, descricao, preco, imagem):
 
-        if int(tipoGrupo) == 2:
-            arrayGrupos = ["http://facebook.com.br/groups/2124656980892699"] 
-
-        elif int(tipoGrupo) == 1:
-            if os.path.exists("grupos.txt"):
-                arquivoGrupos = open("grupos.txt", "r")
-                arrayGrupos = arquivoGrupos.read().split("\n")
-            else:
-                print("Arquivo de grupos não encontrado, ele deve se chamar grupos.txt e estar na pasta raíz do programa")
-                exit()
+        if os.path.exists("grupos.txt"):
+            arquivoGrupos = open("grupos.txt", "r")
+            arrayGrupos = arquivoGrupos.read().split("\n")
+        else:
+            print("Arquivo de grupos não encontrado, ele deve se chamar grupos.txt e estar na pasta raíz do programa")
+            exit()
             
         for link in arrayGrupos:
             navegador.get(link)
@@ -48,10 +44,6 @@ class FuncoesNavegador:
                 time.sleep(8)
             navegador.find_element_by_xpath('//button[@data-testid="react-composer-post-button"]').click()
             time.sleep(4)
-            if int(tipoGrupo) == 2:
-                checkboxes = navegador.find_elements_by_xpath('//div[@role="checkbox"]')
-                for checkbox in checkboxes:
-                    checkbox.click()
             navegador.find_element_by_xpath('//button[@data-testid="react-composer-post-button"]').click()
             time.sleep(8)
             print("Realizada a postagem no grupo: " + link)

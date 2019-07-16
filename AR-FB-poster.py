@@ -24,7 +24,7 @@ while testerNavegador == True:
     if opcaoNavegador.upper() == "S" or opcaoNavegador.upper() == "N":
         testerNavegador = False
     else:
-        print("Opção inválida")
+        print(bcolors.FAIL + "Opção inválida" + bcolors.ENDC)
 
 
 testerOpcao = True
@@ -34,14 +34,6 @@ while testerOpcao == True:
         mensagemPost = input('Digite a mensagem do post: ')
         testerOpcao = False
     elif opcao == "2":
-        testeTipoGrupo = True
-        while testeTipoGrupo == True:
-            tipoGrupo = input ("Deseja postar a partir do arquivo de grupos(1) ou a partir do padrão definido(2)? ")
-            if tipoGrupo == "1" or tipoGrupo == "2":
-                testeTipoGrupo = False
-            else:
-                print ("Opção inválida")
-
         testerImagem = True
         while testerImagem == True:
             imagemAnuncio = input('Digite o nome da imagem que deseja fazer upload, vazio caso não deseje postar imagem (Precisa estar dentro da pasta images): ')
@@ -51,7 +43,8 @@ while testerOpcao == True:
                 print(bcolors.FAIL + "A imagem não foi encontrada, favor digitar o nome novamente" + bcolors.ENDC)
         testerOpcao = False
     else:
-        print("Opção inválida")
+        print(bcolors.FAIL + "Opção inválida" + bcolors.ENDC)
+
 
 
 print(bcolors.OKGREEN + "Iniciando serviço web..." + bcolors.ENDC)
@@ -72,7 +65,7 @@ time.sleep(2)
 if opcao == "1":
     funcoes.realizaPostagem(navegador, mensagemPost)
 elif opcao == "2":
-    funcoes.realizaPostagemGrupos(navegador, descricaoPost["titulo"], descricaoPost["descricao"], descricaoPost["preco"], imagemAnuncio, tipoGrupo)
+    funcoes.realizaPostagemGrupos(navegador, descricaoPost["titulo"], descricaoPost["descricao"], descricaoPost["preco"], imagemAnuncio)
 else:
-    print("Opção inválida")
+    print(bcolors.FAIL + "Opção inválida" + bcolors.ENDC)
     exit()

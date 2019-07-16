@@ -1,17 +1,33 @@
 # AR-FB-Poster
 
 Como utilizar:
-  1) Crie um arquivo chamado 'Constantes.py' (sem aspas) na pasta raiz do projeto e adicione o seguinte conteúdo
+  
+      
+  1) Faça a instalação do selenium através do pip
+  2) Crie um arquivo chamado 'Constantes.py' (sem aspas) na pasta raiz do projeto e adicione o seguinte conteúdo
     
     def email():
       return 'seuEmailTeste@email.com'
     def senha():
       return 'suaSenhTestea'
       
-  2) Faça a instalação do selenium através do pip
+  3) Crie um arquivo chamado "grupos.txt", nele insira os links dos grupos para postar, links devem ser separados por quebras de     linhas. Ex.:
+  
+    https://www.facebook.com/groups/123/
+    https://www.facebook.com/groups/1234/
+    
+  4) Crie um arquivo "post.json" com o seguinte conteúdo, ele possuirá as informações para realizar a postagem.
+  
+    {
+      "titulo":"Titulo Teste", 
+      "descricao":"Descrição Teste * Descrição teste", 
+      "preco":"31990"
+      }
+  OBS.: Os asteriscos(*) na descrição significam quebra de linha, caso queira quebrar a linha duas vezes, use dois asteriscos, e assim por diante
+  
   3) Rode o arquivo AR-FB-poster.py
   
-OBS.: O script foi feito manipulando elementos da página do Facebook, podendo váriar de usuário para usuário, comprometendo a      execução do programa
+O script foi feito manipulando elementos da página do Facebook, podendo váriar de usuário para usuário, comprometendo a      execução do programa
 
 Vídeo demonstrativo de postagens no feed: https://www.youtube.com/watch?v=3Jt9OdR2JT8
 

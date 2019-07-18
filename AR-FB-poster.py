@@ -49,12 +49,14 @@ while testerOpcao == True:
 
 print(bcolors.OKGREEN + "Iniciando serviço web..." + bcolors.ENDC)
 
+profile = webdriver.FirefoxProfile()
+profile.set_preference("dom.webnotifications.enabled", False)
 if opcaoNavegador.upper() == "S":
     navegador = webdriver.Firefox()
 else:
     opcoes = webdriver.FirefoxOptions()
     opcoes.add_argument('-headless')
-    navegador = webdriver.Firefox(options=opcoes)
+    navegador = webdriver.Firefox(options=opcoes,firefox_profile=profile)
 
 funcoes = Funcoes.FuncoesNavegador()
 email = dados.email()

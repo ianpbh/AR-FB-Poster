@@ -47,19 +47,22 @@ class FuncoesNavegador:
         for link in arrayGrupos:
             navegador.get(link)
             time.sleep(2)
-            for x in range(3):
-                navegador.find_element_by_xpath('//input[@placeholder="O que você está vendendo?"]').click()
-            time.sleep(4)
-            navegador.find_element_by_xpath('//input[@placeholder="O que você está vendendo?"]').send_keys(titulo)
-            navegador.find_element_by_xpath('//input[@placeholder="Preço"]').send_keys(preco)
-            navegador.find_element_by_xpath('//input[@placeholder="Adicionar localização (opcional)"]').clear()
-            navegador.find_element_by_class_name('_1mwp').click()
-            navegador.find_element_by_tag_name('body').send_keys(descricao.replace("*","\n"))
-            if imagem != "":
-                navegador.find_element_by_xpath('//input[@title="Escolha um arquivo para carregar"]').send_keys(os.path.abspath('images/'+imagem))
+            try:
+                for x in range(3):
+                    navegador.find_element_by_xpath('//input[@placeholder="O que você está vendendo?"]').click()
+                time.sleep(4)
+                navegador.find_element_by_xpath('//input[@placeholder="O que você está vendendo?"]').send_keys(titulo)
+                navegador.find_element_by_xpath('//input[@placeholder="Preço"]').send_keys(preco)
+                navegador.find_element_by_xpath('//input[@placeholder="Adicionar localização (opcional)"]').clear()
+                navegador.find_element_by_class_name('_1mwp').click()
+                navegador.find_element_by_tag_name('body').send_keys(descricao.replace("*","\n"))
+                if imagem != "":
+                    navegador.find_element_by_xpath('//input[@title="Escolha um arquivo para carregar"]').send_keys(os.path.abspath('images/'+imagem))
+                    time.sleep(8)
+                navegador.find_element_by_xpath('//button[@data-testid="react-composer-post-button"]').click()
+                time.sleep(4)
+                navegador.find_element_by_xpath('//button[@data-testid="react-composer-post-button"]').click()
                 time.sleep(8)
-            navegador.find_element_by_xpath('//button[@data-testid="react-composer-post-button"]').click()
-            time.sleep(4)
-            navegador.find_element_by_xpath('//button[@data-testid="react-composer-post-button"]').click()
-            time.sleep(8)
-            print(bcolors.OKGREEN + "Realizada a postagem no grupo: " + link + bcolors.ENDC)
+                print(bcolors.OKGREEN + "Realizada a postagem no grupo: " + link + bcolors.ENDC)
+            except:
+                print(bcolors.FAIL + "Erro ao postar no grupo " + link + bcolors.ENDC)

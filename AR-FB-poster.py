@@ -25,17 +25,16 @@ while testerOpcao == True:
         mensagemPost = input('Digite a mensagem do post: ')
         testerOpcao = False
     elif opcao == "2":
-        testerImagem = True
-        while testerImagem == True:
-            imagemAnuncio = input('Digite o nome da imagem que deseja fazer upload, vazio caso não deseje postar imagem (Precisa estar dentro da pasta images): ')
-            if os.path.exists("images/" + imagemAnuncio):
-                testerImagem = False
-            else:
-                print(bcolors.FAIL + "A imagem não foi encontrada, favor digitar o nome novamente" + bcolors.ENDC)
         testerOpcao = False
     else:
         print(bcolors.FAIL + "Opção inválida" + bcolors.ENDC)
 
+arrayImagens = descricaoPost['imagem'].replace(" ", "").split(",")
+if len(arrayImagens) > 1:
+    for imagem in arrayImagens:
+        if os.path.exists("images/" + imagem) == False:
+            print(bcolors.FAIL + "Imagem '" + imagem + "' não encontrada, favor verificar" + bcolors.ENDC)
+            exit()
 
 
 print(bcolors.OKGREEN + "Iniciando serviço web..." + bcolors.ENDC)
@@ -58,7 +57,7 @@ time.sleep(2)
 if opcao == "1":
     funcoes.realizaPostagem(navegador, mensagemPost)
 elif opcao == "2":
-    funcoes.realizaPostagemGrupos(navegador, descricaoPost["titulo"], descricaoPost["descricao"], descricaoPost["preco"], imagemAnuncio)
+    funcoes.realizaPostagemGrupos(navegador, descricaoPost["titulo"], descricaoPost["descricao"], descricaoPost["preco"], arrayImagens)
 else:
     print(bcolors.FAIL + "Opção inválida" + bcolors.ENDC)
     exit()

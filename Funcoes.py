@@ -35,7 +35,7 @@ class FuncoesNavegador:
         time.sleep(2)
         navegador.find_element_by_class_name('_6c0o').click()
 
-    def realizaPostagemGrupos(self, navegador, titulo, descricao, preco, imagem):
+    def realizaPostagemGrupos(self, navegador, titulo, descricao, preco, arrayImagens):
 
         if os.path.exists("grupos.txt"):
             arquivoGrupos = open("grupos.txt", "r")
@@ -56,12 +56,16 @@ class FuncoesNavegador:
                 navegador.find_element_by_xpath('//input[@placeholder="Adicionar localização (opcional)"]').clear()
                 navegador.find_element_by_class_name('_1mwp').click()
                 navegador.find_element_by_tag_name('body').send_keys(descricao.replace("*","\n"))
-                if imagem != "":
-                    navegador.find_element_by_xpath('//input[@title="Escolha um arquivo para carregar"]').send_keys(os.path.abspath('images/'+imagem))
-                    time.sleep(8)
-                navegador.find_element_by_class_name('_1mf7').click()
+                if len(arrayImagens) > 1:
+                    for imagem in arrayImagens:
+                        navegador.find_element_by_xpath('//input[@title="Escolha um arquivo para carregar"]').send_keys(os.path.abspath('images/'+imagem))
+                        time.sleep(2)
+                    time.sleep(10)
+                else:
+                    time.sleep(2)
+                navegador.find_element_by_xpath('//button[@data-testid="react-composer-post-button"]').click()
                 time.sleep(6)
-                navegador.find_element_by_class_name('_1mf7').click()
+                navegador.find_element_by_xpath('//button[@data-testid="react-composer-post-button"]').click()
                 time.sleep(6)
                 print(bcolors.OKGREEN + "Realizada a postagem no grupo: " + link + bcolors.ENDC)
             except:

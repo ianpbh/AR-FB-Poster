@@ -59,10 +59,10 @@ class FuncoesNavegador:
                 if imagem != "":
                     navegador.find_element_by_xpath('//input[@title="Escolha um arquivo para carregar"]').send_keys(os.path.abspath('images/'+imagem))
                     time.sleep(8)
-                navegador.find_element_by_xpath('//button[@data-testid="react-composer-post-button"]').click()
-                time.sleep(4)
-                navegador.find_element_by_xpath('//button[@data-testid="react-composer-post-button"]').click()
-                time.sleep(8)
+                navegador.find_element_by_class_name('_1mf7').click()
+                time.sleep(6)
+                navegador.find_element_by_class_name('_1mf7').click()
+                time.sleep(6)
                 print(bcolors.OKGREEN + "Realizada a postagem no grupo: " + link + bcolors.ENDC)
             except:
                 print(bcolors.FAIL + "Erro ao postar no grupo " + link + bcolors.ENDC)

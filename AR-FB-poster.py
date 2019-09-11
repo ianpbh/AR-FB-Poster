@@ -30,7 +30,7 @@ while testerOpcao == True:
         print(bcolors.FAIL + "Opção inválida" + bcolors.ENDC)
 
 arrayImagens = descricaoPost['imagem'].replace(" ", "").split(",")
-if len(arrayImagens) > 1:
+if len(arrayImagens) >= 1:
     for imagem in arrayImagens:
         if os.path.exists("images/" + imagem) == False:
             print(bcolors.FAIL + "Imagem '" + imagem + "' não encontrada, favor verificar" + bcolors.ENDC)
@@ -42,7 +42,7 @@ print(bcolors.OKGREEN + "Iniciando serviço web..." + bcolors.ENDC)
 profile = webdriver.FirefoxProfile()
 profile.set_preference("dom.webnotifications.enabled", False)
 if opcaoNavegador.upper() == "S":
-    navegador = webdriver.Firefox()
+    navegador = webdriver.Firefox(firefox_profile=profile)
 else:
     opcoes = webdriver.FirefoxOptions()
     opcoes.add_argument('-headless')

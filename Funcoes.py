@@ -56,7 +56,7 @@ class FuncoesNavegador:
                 navegador.find_element_by_xpath('//input[@placeholder="Adicionar localização (opcional)"]').clear()
                 navegador.find_element_by_class_name('_1mwp').click()
                 navegador.find_element_by_tag_name('body').send_keys(descricao.replace("*","\n"))
-                if len(arrayImagens) > 1:
+                if len(arrayImagens) >= 1:
                     for imagem in arrayImagens:
                         navegador.find_element_by_xpath('//input[@title="Escolha um arquivo para carregar"]').send_keys(os.path.abspath('images/'+imagem))
                         time.sleep(2)
